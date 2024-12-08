@@ -94,8 +94,27 @@
   * {
     @apply border-border;
   }
-
+  
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Space animation */
+.stars {
+  background-size: 200px 200px;
+  animation: space 10s ease-in-out infinite;
+  opacity: 0.5;
+}
+
+@keyframes space {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 100px 100px;
+  }
+  100% {
+    background-position: 0 0;
   }
 }
