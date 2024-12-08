@@ -4,10 +4,26 @@ import TikTokDownloader from "@/components/TikTokDownloader";
 const Index = () => {
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Space background with animation */}
+      {/* Solar System background with animation */}
       <div className="absolute inset-0 bg-black">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/50 via-black to-black animate-pulse"></div>
-        {/* Animated stars */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/50 via-black to-black"></div>
+        {/* Solar System */}
+        <div className="solar-system absolute inset-0">
+          <div className="sun"></div>
+          <div className="mercury-orbit">
+            <div className="mercury"></div>
+          </div>
+          <div className="venus-orbit">
+            <div className="venus"></div>
+          </div>
+          <div className="earth-orbit">
+            <div className="earth"></div>
+          </div>
+          <div className="mars-orbit">
+            <div className="mars"></div>
+          </div>
+        </div>
+        {/* Stars background */}
         <div className="stars absolute inset-0" 
           style={{
             background: `radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
@@ -17,7 +33,7 @@ const Index = () => {
                         radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
                         radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0))`
           }}>
-      </div>
+        </div>
       </div>
       <FloatingElements />
       <div className="container min-h-screen flex items-center justify-center px-4 relative z-10">
