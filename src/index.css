@@ -109,15 +109,15 @@
 
 .solar-system {
   position: absolute;
-  transform: scale(0.4);
+  transform: scale(0.8);
 }
 
 .sun {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   background: radial-gradient(circle, #ff8f00, #ff6d00);
   border-radius: 50%;
   box-shadow: 0 0 50px #ff8f00;
@@ -133,10 +133,10 @@
   transform: translate(-50%, -50%);
 }
 
-.mercury-orbit { width: 100px; height: 100px; animation: orbit 8s linear infinite; }
-.venus-orbit { width: 160px; height: 160px; animation: orbit 12s linear infinite; }
-.earth-orbit { width: 220px; height: 220px; animation: orbit 16s linear infinite; }
-.mars-orbit { width: 280px; height: 280px; animation: orbit 20s linear infinite; }
+.mercury-orbit { width: 160px; height: 160px; animation: orbit 8s linear infinite; }
+.venus-orbit { width: 240px; height: 240px; animation: orbit 12s linear infinite; }
+.earth-orbit { width: 320px; height: 320px; animation: orbit 16s linear infinite; }
+.mars-orbit { width: 400px; height: 400px; animation: orbit 20s linear infinite; }
 
 .mercury, .venus, .earth, .mars {
   position: absolute;

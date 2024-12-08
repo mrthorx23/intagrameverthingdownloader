@@ -7,24 +7,8 @@ const Index = () => {
       {/* Solar System background with animation */}
       <div className="absolute inset-0 bg-black">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/50 via-black to-black"></div>
-        {/* Left Solar System */}
-        <div className="solar-system absolute left-0 top-0 w-1/2 h-full">
-          <div className="sun"></div>
-          <div className="mercury-orbit">
-            <div className="mercury"></div>
-          </div>
-          <div className="venus-orbit">
-            <div className="venus"></div>
-          </div>
-          <div className="earth-orbit">
-            <div className="earth"></div>
-          </div>
-          <div className="mars-orbit">
-            <div className="mars"></div>
-          </div>
-        </div>
-        {/* Right Solar System */}
-        <div className="solar-system absolute right-0 top-0 w-1/2 h-full">
+        {/* Centered Solar System */}
+        <div className="solar-system absolute right-[-25%] top-1/2 transform -translate-y-1/2">
           <div className="sun"></div>
           <div className="mercury-orbit">
             <div className="mercury"></div>
