@@ -4,27 +4,45 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 
 const Index = () => {
   const [url, setUrl] = useState("");
-  const { toast } = useToast();
-
-  const handleDownload = (type: string) => {
+  
+  const downloadMedia = async (type: string) => {
     if (!url) {
-      toast({
-        title: "Error",
-        description: "Please enter an Instagram URL",
-        variant: "destructive",
-      });
+      toast.error("Please enter an Instagram URL");
       return;
     }
-    
-    // For demonstration, show a success message
-    toast({
-      title: "Success",
-      description: `Started downloading ${type} from Instagram`,
-    });
+
+    // Validate Instagram URL
+    if (!url.includes('instagram.com')) {
+      toast.error("Please enter a valid Instagram URL");
+      return;
+    }
+
+    try {
+      // Simulate download process
+      toast.loading("Starting download...");
+      
+      // In a real implementation, this would be an API call to your backend
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      // Create a dummy download for demonstration
+      const dummyData = `data:text/plain;charset=utf-8,${encodeURIComponent('Instagram content')}`;
+      const downloadLink = document.createElement('a');
+      downloadLink.href = dummyData;
+      downloadLink.download = `instagram-${type}-${Date.now()}.txt`;
+      
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+
+      toast.success(`${type} downloaded successfully!`);
+    } catch (error) {
+      console.error('Download error:', error);
+      toast.error("Failed to download. Please try again.");
+    }
   };
 
   return (
@@ -74,17 +92,23 @@ const Index = () => {
                   <span>Download Profile Picture</span>
                 </Button>
               </DialogTrigger>
-              <DialogContent>
+              <DialogContent className="bg-black/90 border-white/20">
                 <DialogHeader>
-                  <DialogTitle>Download Profile Picture</DialogTitle>
+                  <DialogTitle className="text-white">Download Profile Picture</DialogTitle>
                 </DialogHeader>
                 <div className="space-y-4 mt-4">
                   <Input
                     placeholder="Enter Instagram profile URL"
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
                   />
-                  <Button onClick={() => handleDownload('profile picture')}>Download</Button>
+                  <Button 
+                    onClick={() => downloadMedia('profile-picture')}
+                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                  >
+                    Download
+                  </Button>
                 </div>
               </DialogContent>
             </Dialog>
@@ -97,17 +121,23 @@ const Index = () => {
                   <span>Download Images</span>
                 </Button>
               </DialogTrigger>
-              <DialogContent>
+              <DialogContent className="bg-black/90 border-white/20">
                 <DialogHeader>
-                  <DialogTitle>Download Images</DialogTitle>
+                  <DialogTitle className="text-white">Download Images</DialogTitle>
                 </DialogHeader>
                 <div className="space-y-4 mt-4">
                   <Input
                     placeholder="Enter Instagram post URL"
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
                   />
-                  <Button onClick={() => handleDownload('images')}>Download</Button>
+                  <Button 
+                    onClick={() => downloadMedia('images')}
+                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                  >
+                    Download
+                  </Button>
                 </div>
               </DialogContent>
             </Dialog>
@@ -120,17 +150,23 @@ const Index = () => {
                   <span>Download Videos</span>
                 </Button>
               </DialogTrigger>
-              <DialogContent>
+              <DialogContent className="bg-black/90 border-white/20">
                 <DialogHeader>
-                  <DialogTitle>Download Videos</DialogTitle>
+                  <DialogTitle className="text-white">Download Videos</DialogTitle>
                 </DialogHeader>
                 <div className="space-y-4 mt-4">
                   <Input
                     placeholder="Enter Instagram video URL"
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
                   />
-                  <Button onClick={() => handleDownload('video')}>Download</Button>
+                  <Button 
+                    onClick={() => downloadMedia('video')}
+                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                  >
+                    Download
+                  </Button>
                 </div>
               </DialogContent>
             </Dialog>
@@ -143,17 +179,23 @@ const Index = () => {
                   <span>Extract Profile Data</span>
                 </Button>
               </DialogTrigger>
-              <DialogContent>
+              <DialogContent className="bg-black/90 border-white/20">
                 <DialogHeader>
-                  <DialogTitle>Extract Profile Data</DialogTitle>
+                  <DialogTitle className="text-white">Extract Profile Data</DialogTitle>
                 </DialogHeader>
                 <div className="space-y-4 mt-4">
                   <Input
                     placeholder="Enter Instagram profile URL"
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
                   />
-                  <Button onClick={() => handleDownload('profile data')}>Extract Data</Button>
+                  <Button 
+                    onClick={() => downloadMedia('profile-data')}
+                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                  >
+                    Extract Data
+                  </Button>
                 </div>
               </DialogContent>
             </Dialog>
@@ -166,17 +208,23 @@ const Index = () => {
                   <span>View Private Profiles</span>
                 </Button>
               </DialogTrigger>
-              <DialogContent>
+              <DialogContent className="bg-black/90 border-white/20">
                 <DialogHeader>
-                  <DialogTitle>View Private Profiles</DialogTitle>
+                  <DialogTitle className="text-white">View Private Profiles</DialogTitle>
                 </DialogHeader>
                 <div className="space-y-4 mt-4">
                   <Input
                     placeholder="Enter private profile URL"
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
                   />
-                  <Button onClick={() => handleDownload('private profile')}>View Profile</Button>
+                  <Button 
+                    onClick={() => downloadMedia('private-profile')}
+                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                  >
+                    View Profile
+                  </Button>
                 </div>
               </DialogContent>
             </Dialog>
